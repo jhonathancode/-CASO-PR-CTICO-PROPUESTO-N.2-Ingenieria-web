@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<h1>Lista de tareas</h1>
+
+<input type="text" class="form-control" [(ngModel)]="filtro" placeholder="Buscar tarea">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let tarea of tareas | filter:filtro">
+      <td>{{ tarea.titulo }}</td>
+      <td>{{ tarea.descripcion }}</td>
+      <td>
+        <a routerLink="/editar-tarea/{{ tarea.id }}" class="btn btn-primary">Editar</a>
+        <button type="button" class="btn btn-danger" (click)="eliminarTarea(tarea)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<a routerLink="/crear-tarea" class="btn btn-primary">Agregar tarea</a>
+</head>
